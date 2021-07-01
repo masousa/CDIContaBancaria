@@ -1,10 +1,8 @@
 package br.com.letscode.aplicacao;
 
 import br.com.letscode.dominio.Conta;
-import br.com.letscode.dominio.ContaEnum;
 import br.com.letscode.dominio.Usuario;
-import br.com.letscode.service.ContaFactory;
-import br.com.letscode.service.ContaService;
+import br.com.letscode.view.ContaView;
 import br.com.letscode.view.UsuarioView;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +17,7 @@ public class Aplicacao {
     private UsuarioView usuarioView;
 
     @Inject
-    private ContaFactory contaFactory;
+    private ContaView contaView;
 
     @PostConstruct
     public void iniciar() {
@@ -31,9 +29,9 @@ public class Aplicacao {
         getUsuarios().add(usuarioView.create(sc));
     }
 
-    public Conta createConta(ContaEnum contaEnum, Conta conta) {
-        final ContaService contaFactoryConta = contaFactory.createConta(contaEnum);
-        return contaFactoryConta.criarConta(conta);
+    public Conta createConta(Scanner sc) {
+
+        return contaView.createConta(sc);
     }
 
     public List<Usuario> getUsuarios() {

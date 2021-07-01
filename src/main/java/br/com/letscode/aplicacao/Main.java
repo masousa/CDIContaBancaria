@@ -1,7 +1,5 @@
 package br.com.letscode.aplicacao;
 
-import br.com.letscode.dominio.Conta;
-import br.com.letscode.dominio.ContaEnum;
 import br.com.letscode.dominio.Usuario;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
@@ -35,18 +33,7 @@ public class Main {
                         .map(Usuario::getCaminhoArquivo).forEach(System.out::println);
                 break;
             case 2:
-                System.out.println("Tipo da conta \n\t 1 - Conta Poupança \n\t 2- Conta Especial");
-                int opcaoConta = sc.nextInt();
-                ContaEnum contaEnum = null;
-                switch (opcaoConta) {
-                    case 1:
-                        contaEnum = ContaEnum.POUPANCA;
-                        break;
-                    case 2:
-                        contaEnum = ContaEnum.ESPECIAL;
-                        break;
-                }
-                aplicacao.createConta(contaEnum, new Conta());
+                aplicacao.createConta(sc);
                 break;
             case 0:
                 System.exit(0);

@@ -2,6 +2,7 @@ package br.com.letscode.view;
 
 import br.com.letscode.dominio.Usuario;
 import br.com.letscode.exceptions.PrecondicaoException;
+import br.com.letscode.service.ContaFactory;
 import br.com.letscode.service.UsuarioService;
 
 import javax.inject.Inject;
@@ -10,6 +11,9 @@ import java.util.Scanner;
 public class UsuarioViewImpl implements UsuarioView {
     @Inject
     private UsuarioService usuarioService;
+
+    @Inject
+    private ContaFactory contaFactory;
 
     @Override
     public Usuario create(Scanner sc) {
