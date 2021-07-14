@@ -1,32 +1,34 @@
 package br.com.letscode.dominio;
 
-public class Usuario {
+import lombok.Data;
+
+import java.util.StringTokenizer;
+
+@Data
+public class Usuario implements Entidade{
 
     private String nome;
     private Integer idade;
+    String cpf;
     private String caminhoArquivo;
 
-    public String getNome() {
-        return nome;
+
+    public String toStringFile() {
+        return String.format("%n;%d;%n;%n",nome,idade,cpf.replace(".",""),caminhoArquivo);
+
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Entidade toObject(String file) {
+        StringTokenizer token = new StringTokenizer(file, ";");
+        nome = token.nextToken();
+        idade = Integer.parseInt(token.nextToken());
+        cpf = token.nextToken();
+        caminhoArquivo = token.nextToken();
+        return this;
     }
 
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-
-    public void setCaminhoArquivo(String caminhoArquivo) {
-        this.caminhoArquivo = caminhoArquivo;
-    }
-
-    public String getCaminhoArquivo() {
-        return caminhoArquivo;
+    @Override
+    public String getIdentificador() {
+        return cpf;
     }
 }

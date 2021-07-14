@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Bem vindo");
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("O que gostaria de fazer? \n 1 - Cadastrar usuário \n 2 - Criar conta \n 0 - Sair \n");
+            System.out.println("O que gostaria de fazer? \n 1 - Cadastrar usuário \n 2 - Criar conta \n 3 - Sacar \n 4 - Depositar \n 0 - Sair \n");
             opcao = sc.nextInt();
             definirOpcao(sc, opcao, aplicacao);
         } while (opcao > 0);
@@ -34,6 +34,12 @@ public class Main {
                 break;
             case 2:
                 aplicacao.createConta(sc);
+                break;
+            case 3:
+                aplicacao.sacar(sc);
+                break;
+            case 4:
+                aplicacao.depositar(sc);
                 break;
             case 0:
                 System.exit(0);

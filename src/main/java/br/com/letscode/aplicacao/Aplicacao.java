@@ -34,6 +34,16 @@ public class Aplicacao {
         return contaView.createConta(sc);
     }
 
+    public void sacar(Scanner sc) {
+
+        contaView.sacar(sc);
+    }
+
+    public void depositar(Scanner sc) {
+
+        contaView.depositar(sc);
+    }
+
     public List<Usuario> getUsuarios() {
         return usuarios;
     }

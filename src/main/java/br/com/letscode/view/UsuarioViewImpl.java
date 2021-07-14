@@ -6,6 +6,7 @@ import br.com.letscode.service.ContaFactory;
 import br.com.letscode.service.UsuarioService;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UsuarioViewImpl implements UsuarioView {
@@ -22,12 +23,15 @@ public class UsuarioViewImpl implements UsuarioView {
         usuario.setNome(sc.next());
         System.out.println("Informe a idade do usuário");
         usuario.setIdade(sc.nextInt());
+        System.out.println("Informe o cpf do usuário");
+        usuario.setCpf(sc.next());
         System.out.printf("Usuário %s criado com sucesso \n", usuario.getNome());
         try {
-            return usuarioService.create(usuario);
-        } catch (PrecondicaoException e) {
+            usuarioService.create(usuario);
+        } catch (PrecondicaoException | IOException e) {
             System.err.println(e.getMessage());
-            return new Usuario();
+
         }
+        return usuario;
     }
 }

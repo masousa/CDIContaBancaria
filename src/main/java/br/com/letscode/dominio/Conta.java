@@ -1,44 +1,23 @@
 package br.com.letscode.dominio;
 
-public class Conta {
+import lombok.Data;
 
+import java.math.BigDecimal;
+import java.util.StringTokenizer;
+
+@Data
+public class Conta implements Entidade{
 
     private String numeroConta;
     private String senha;
     private Usuario usuario;
     private String caminhoArquivo;
+    private ContaEnum tipoConta;
+    private BigDecimal saldo;
 
-    public String getSenha() {
-        return senha;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getCaminhoArquivo() {
-        return caminhoArquivo;
-    }
-
-    public void setCaminhoArquivo(String caminhoArquivo) {
-        this.caminhoArquivo = caminhoArquivo;
-    }
-
-    public String getNumeroConta() {
+    @Override
+    public String getIdentificador() {
         return numeroConta;
     }
-
-    public void setNumeroConta(String numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-
 }
