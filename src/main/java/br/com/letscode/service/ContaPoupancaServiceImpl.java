@@ -33,4 +33,10 @@ public class ContaPoupancaServiceImpl extends ContaHelper implements ContaServic
         BigDecimal valorASerDepositado = valor.subtract(valorTaxa);
         return super.depositar(valorASerDepositado, conta, senha);
     }
+
+    @Override
+    public Conta criarConta(Conta conta) throws IOException {
+        conta.setSaldo(BigDecimal.valueOf(100D));
+        return super.criarConta(conta);
+    }
 }

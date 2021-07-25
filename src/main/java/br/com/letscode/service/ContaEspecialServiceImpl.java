@@ -70,6 +70,7 @@ public class ContaEspecialServiceImpl extends ContaHelper implements ContaServic
     @Override
     public Conta criarConta(Conta conta) throws IOException {
         ((ContaEspecial) conta).setLimite(new BigDecimal(200D));
+        conta.setSaldo(BigDecimal.valueOf(400D));
         return super.criarConta(conta);
     }
 }
